@@ -25,15 +25,16 @@ namespace ParserUI
         /// </summary>
         private async void StartButton_Click(object sender, EventArgs e)
         {
-            string response = TwoDroid.GetPage(@"https://2droida.ru/catalog/Smartfony-i-telefony/");
-            var parsing = await TwoDroid.ParsProductAsync(response);
-            string test = String.Empty;
-            foreach (var item in parsing)
+            for (int i = 1; i < 5; i++)//45 страниц
             {
-                test += item.ToString() + "\r\n";
+                string response = TwoDroid.GetPage($"https://2droida.ru/catalog/Smartfony-i-telefony/?page= {i}");
+                var parsing = await TwoDroid.ParsProductAsync(response);
+                foreach (var item in parsing)
+                {
+                    richTextBox1.AppendText(item.ToString() + "\n\n");
+                }
             }
-
-            richTextBox1.Text = test;
+            
         }
         /// <summary>
         /// Кнопка остановки парсинга

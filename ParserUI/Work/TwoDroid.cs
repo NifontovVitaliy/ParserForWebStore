@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AngleSharp.Html.Parser;
+﻿using AngleSharp.Html.Parser;
 using Leaf.xNet;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ParserUI.Work
 {
@@ -45,7 +42,6 @@ namespace ParserUI.Work
                     ImageUrl =item.QuerySelector("div.image.full-gallery>a>img").GetAttribute("src")
                 });
             }
-
             return products;
         }
     }
