@@ -10,7 +10,7 @@
 
         public override string ToString()
         {
-            return Name + " " + Price + Description + " " + ImageUrl;
+            return Name + "\n " + Price + "\n" + Description + "\n " + ImageUrl + "\n";
         }
     }
 }

@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Work\Page.cs" />
     <Compile Include="Work\Product.cs" />
     <Compile Include="Work\TwoDroid.cs" />
     <EmbeddedResource Include="ParserMainForm.resx">

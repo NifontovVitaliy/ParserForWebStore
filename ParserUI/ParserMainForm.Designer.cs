@@ -32,14 +32,14 @@
             this.StopButton = new System.Windows.Forms.Button();
             this.UrlTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.FromPageNumeric = new System.Windows.Forms.NumericUpDown();
+            this.ToPageNumeric = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SelectAllCheckBox = new System.Windows.Forms.CheckBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FromPageNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ToPageNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -78,35 +78,35 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Url";
             // 
-            // numericUpDown1
+            // FromPageNumeric
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(35, 114);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.FromPageNumeric.Location = new System.Drawing.Point(35, 114);
+            this.FromPageNumeric.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.FromPageNumeric.Name = "FromPageNumeric";
+            this.FromPageNumeric.Size = new System.Drawing.Size(60, 20);
+            this.FromPageNumeric.TabIndex = 1;
+            this.FromPageNumeric.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // ToPageNumeric
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(120, 114);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.ToPageNumeric.Location = new System.Drawing.Point(120, 114);
+            this.ToPageNumeric.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown2.TabIndex = 2;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.ToPageNumeric.Name = "ToPageNumeric";
+            this.ToPageNumeric.Size = new System.Drawing.Size(60, 20);
+            this.ToPageNumeric.TabIndex = 2;
+            this.ToPageNumeric.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -157,8 +157,8 @@
             this.Controls.Add(this.SelectAllCheckBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.ToPageNumeric);
+            this.Controls.Add(this.FromPageNumeric);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UrlTextBox);
             this.Controls.Add(this.StopButton);
@@ -169,8 +169,8 @@
             this.Name = "ParserMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parser";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FromPageNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ToPageNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,8 +182,8 @@
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.TextBox UrlTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown FromPageNumeric;
+        private System.Windows.Forms.NumericUpDown ToPageNumeric;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox SelectAllCheckBox;

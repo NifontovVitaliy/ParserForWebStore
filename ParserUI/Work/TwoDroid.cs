@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Html.Parser;
 using Leaf.xNet;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace ParserUI.Work
 {
@@ -25,21 +25,33 @@ namespace ParserUI.Work
         /// парсер 
         /// </summary>
         /// <returns></returns>
-        public static async Task<List<Product>> ParsProductAsync(string response)
+        public static List<Product> ParsProduct(string response)
         {
             HtmlParser htmlParser = new HtmlParser();
-            var doc = await htmlParser.ParseDocumentAsync(response);
+            var doc = htmlParser.ParseDocument(response);
             List<Product> products = new List<Product>();
-            string test = doc.QuerySelector("div.wrapper>div.main-content>div.main>div.row.no-margin>div.col-md-9>div.items.row.no-maring>div.col-md-4.col-sm-4>div.product>div.item-wrapper>div.item").InnerHtml;
 
-            foreach (var item in doc.QuerySelectorAll("div.wrapper>div.main-content>div.main>div.row.no-margin>div.col-md-9>div.items.row.no-maring>div.col-md-4.col-sm-4>div.product>div.item-wrapper>div.item"))
+            foreach (var item in doc.QuerySelectorAll("div.wrapper>div.main-content>div.main>div.row.no-margin>div.col-md-9>div.items.row.no-maring>div.col-md-4.col-sm-4"))
             {
+                string name = item.QuerySelector("div.white-block.description>>div.info>span.type>a").TextContent;
+                string description = item.QuerySelector("div.white-block.description>div.info>div.title>a").TextContent;
+                string price = "10000";
+                    //item.QuerySelector("div.white-block.description>span.price").TextContent;
+                try
+                {
+                    price = item.QuerySelector("div.white-block.description>span.price>span").GetAttribute("content");
+                }
+                catch
+                {
+                    price = null;
+                }
+                string imgUrl = item.QuerySelector("div.image.full-gallery>a>img").GetAttribute("src");
                 products.Add(new Product
                 {
-                    Name = item.QuerySelector("div.white-block.description>div.info>span.type>a").TextContent,
-                    Description = item.QuerySelector("div.white-block.description>div.info>div.title>a").TextContent,
-                    Price = item.QuerySelector("div.white-block.description>span.price").TextContent,
-                    ImageUrl =item.QuerySelector("div.image.full-gallery>a>img").GetAttribute("src")
+                    Name = name,
+                    Description = description,
+                    Price = price,
+                    ImageUrl = imgUrl
                 });
             }
             return products;
