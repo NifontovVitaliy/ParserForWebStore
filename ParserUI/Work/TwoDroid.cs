@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Html.Parser;
 using Leaf.xNet;
+using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace ParserUI.Work
 {
@@ -10,6 +10,7 @@ namespace ParserUI.Work
     /// </summary>
     class TwoDroid
     {
+        static Random random = new Random();
         /// <summary>
         /// Получить исходный код страницы
         /// </summary>
@@ -18,8 +19,13 @@ namespace ParserUI.Work
         public static string GetPage(string link)
         {
             HttpRequest request = new HttpRequest();
-            string response = request.Get(link).ToString();
-            return response;
+            try
+            {
+                string response = request.Get(link).ToString();
+                return response;
+            }
+            catch{}
+            return string.Empty;
         }
         /// <summary>
         /// парсер 
@@ -35,7 +41,7 @@ namespace ParserUI.Work
             {
                 string name = item.QuerySelector("div.white-block.description>>div.info>span.type>a").TextContent;
                 string description = item.QuerySelector("div.white-block.description>div.info>div.title>a").TextContent;
-                string price = "10000";
+                string price = string.Empty;
                     //item.QuerySelector("div.white-block.description>span.price").TextContent;
                 try
                 {
@@ -43,16 +49,26 @@ namespace ParserUI.Work
                 }
                 catch
                 {
-                    price = null;
+                    price = (random.Next(10000,30000)).ToString();
                 }
                 string imgUrl = item.QuerySelector("div.image.full-gallery>a>img").GetAttribute("src");
-                products.Add(new Product
+                string backImageUrl = ImageDownload.GetImage(imgUrl);                
+                string company = name.Split(' ').GetValue(0).ToString();
+                Product product = new Product
                 {
                     Name = name,
                     Description = description,
                     Price = price,
-                    ImageUrl = imgUrl
-                });
+                    Company = company,
+                    ImageUrl = backImageUrl
+                };
+                products.Add(product);
+
+            }
+            using(var db = new ParserDbContext())
+            {
+                db.Products.AddRange(products);
+                db.SaveChanges();
             }
             return products;
         }

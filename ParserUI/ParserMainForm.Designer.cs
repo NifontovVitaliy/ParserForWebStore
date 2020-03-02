@@ -169,6 +169,8 @@
             this.Name = "ParserMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parser";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParserMainForm_FormClosing);
+            this.Load += new System.EventHandler(this.ParserMainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FromPageNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToPageNumeric)).EndInit();
             this.ResumeLayout(false);
